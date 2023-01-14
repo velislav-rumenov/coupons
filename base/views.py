@@ -1,6 +1,6 @@
 from .models import Coupon
 from django.shortcuts import render, redirect
-from django.http import JsonResponse,HttpResponse, HttpResponseRedirect
+from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.core import serializers
 
 
@@ -8,8 +8,12 @@ from django.core import serializers
 def couponTest(request):
     json_data = None
     if request.method == "POST":
-        code = Coupon.objects.get(code__exact=request.POST["code"])
-        json_data = serializers.serialize('json', [code])
-        return JsonResponse(json_data)
+        try:
+            code = Coupon.objects.get(code__exact=request.POST["code"])
+        except:
+            return HttpResponse("Invalid Code")
+        else:
+            json_data = serializers.serialize('json', [code])
+            return JsonResponse(json_data)
     context = {"json": json_data}
     return render(request, 'home.html')
