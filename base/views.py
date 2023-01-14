@@ -2,6 +2,7 @@ from .models import Coupon
 from django.shortcuts import render, redirect
 from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.core import serializers
+import json
 
 
 # Create your views here.
@@ -14,6 +15,6 @@ def couponTest(request):
             return HttpResponse("Invalid Code")
         else:
             json_data = serializers.serialize('json', [code])
-            return JsonResponse(json_data)
+            return JsonResponse(json.loads(json_data), safe=False)
     context = {"json": json_data}
     return render(request, 'home.html')
