@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Coupon Test</title>
+</head>
+<body>
+    <div>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <input type="text" id="code", name="code">
+            <input type="number" id="price", name="price">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
