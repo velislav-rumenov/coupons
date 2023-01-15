@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 
+
 # Create your models here
 
 
@@ -16,6 +17,7 @@ class Coupon(models.Model):
     def __str__(self):
         return self.code
 
+
 class Territory(models.Model):
-    name =  models.CharField(max_length=25, unique=True)
+    name = models.CharField(max_length=25, unique=True)
     zip = models.IntegerField(unique=True)
