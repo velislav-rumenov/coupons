@@ -5,7 +5,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 # Create your models here
 class Territory(models.Model):
     name = models.CharField(max_length=25, unique=True)
-    zip = models.IntegerField(unique=True)
+    zip = models.CharField(unique=True, max_length=5, null=True)
 
     def __str__(self):
         return self.name
