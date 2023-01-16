@@ -30,8 +30,11 @@ def couponApply(request):
             currentPrice = int(request.POST["price"])
             isActive = code.isActive
             if isActive:
+<<<<<<< HEAD
+=======
                 print(dt.datetime.utcnow())
                 print(code.validFrom)
+>>>>>>> 8fe9b6d1ce2522ae15b73e0aa8f3e309b9246841
                 if code.validFrom < dt.datetime.utcnow().astimezone() < code.validTo:
                     if code.isFixed:
                         newPrice = currentPrice - int(code.fixedDiscount)
